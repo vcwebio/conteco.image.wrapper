@@ -3,3 +3,4 @@
 executionplane-message "COMMAND" "$@"
 "$@"  > >( executionplane-output-parser-stdout ) 2> >( executionplane-output-parser-stderr)
 executionplane-wait-for-output-parser
+executionplane-message "COMMCOMPL" "$@"
