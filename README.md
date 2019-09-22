@@ -71,3 +71,13 @@ It is accessible using command line flags when instantiating the image.
 [`image.wrapper` API Flags in detail](./docs/IMAGE-WRAPPER-API-FLAGS.md)
 
 [`image.wrapper` API Methods in detail](./docs/IMAGE-WRAPPER-API.md)
+
+## Folder Structure
+
+The _image.wrapper_ image creates the base `conteco` folder structure for the wrapped image.  
+The `conteco` folder container five subfolders:
+- __`assets`__ containing image type and name subfolders holding files required for building and/or configuring the image.
+- __`bin`__ containing executable files, in an image type and name subfolder structure.
+- __`extract`__ containing files required by other images, contained in a subfolder structure with type and name of requesting image.
+- __`pwd`__ the working folder of an image.
+- __`repo`__ the image folder containing the git repository.
