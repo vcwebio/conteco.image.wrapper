@@ -4,6 +4,7 @@
 	if [[ "$1" == "all" ]] ; then
 		shift
 	fi
-    . executionplane-error "No image specific implementation for configure."
+    config $@
+#    executionplane-info "Image does not implement config."
     executionplane-complete
 )

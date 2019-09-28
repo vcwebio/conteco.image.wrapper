@@ -4,6 +4,6 @@
 	if [[ "$1" == "all" ]] ; then
 		shift
 	fi
-    . executionplane-error "No image specific implementation for release."
+    release $@
     executionplane-complete
 )

@@ -4,6 +4,7 @@
 	if [[ "$1" == "all" ]] ; then
 		shift
 	fi
-    . executionplane-error "No image specific implementation for run."
+#    run $@
+    executionplane-info "Image does not implement run."
     executionplane-complete
 )

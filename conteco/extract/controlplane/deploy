@@ -4,23 +4,7 @@
 	if [[ "$1" == "all" ]] ; then
 		shift
 	fi
-    . executionplane-error "No image specific implementation for configure."
+#    deploy $@
+    executionplane-info "Image does not implement deploy."
     executionplane-complete
 )
-#    methodfile="./infometis/${CONTECO_TYPE}/${CONTECO_NAME}/bin/${method}"
-#    if [[ -f "$methodfile" ]]; then
-#        . executionplane-info "Executing specific implementation for ${CONTECO_TYPE}:${CONTECO_NAME}."
-#        $methodfile
-#    else
-#        . executionplane-info "Executing container model ${CONTECO_MODEL} implementation."
-#        current=$(pwd)
-#        for f in ./stacks/*;
-#            do
-#            base=$(basename $f)
-#            if [[ $base != "${INFOMETIS_MODULENAME}" ]] ; then
-#                cd $f
-#                .invoke $method 
-#                cd $current
-#            fi
-#            done;
-#    fi
