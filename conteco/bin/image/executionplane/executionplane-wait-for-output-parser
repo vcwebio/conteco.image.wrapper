@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-test="continue"
-while [[ $test != "" ]]
-do 
+test="2"
+while (( $test > 1 ))
+do
     usleep 500000
-    test=$(ps aux | grep -i /conteco/bin/image/executionplane/executionplane-output-parser)
+    test=$(ps aux | grep -i /conteco/bin/image/executionplane/executionplane-output-parser | wc -l)
+#    echo $test
     done
