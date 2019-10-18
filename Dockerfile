@@ -1,5 +1,5 @@
 ##### BEGIN image.wrapper/Dockerfile/image-header #####
-FROM $CONTECO_REALM/$CONTECO_ECOSYSTEM.$CONTECO_BASE AS base
+FROM $CONTECO_REGISTRY$CONTECO_REALM/$CONTECO_ECOSYSTEM.$CONTECO_BASE AS base
 ##### END image.wrapper/Dockerfile/image-header #####
 
 ##### BEGIN image.wrapper/Dockerfile/conteco #####
