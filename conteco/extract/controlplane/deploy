@@ -4,7 +4,6 @@
 	if [[ "$1" == "all" ]] ; then
 		shift
 	fi
-#    deploy $@
-    executionplane-info "Image does not implement deploy."
+    deploy image $@
     executionplane-complete
 )
