@@ -25,7 +25,7 @@ __`output-to-JSON`__
 This method provides the output from `stdout` to the JSON convertor when using the __ContEco__ JSON output format.  
 By default no filter is applied. This can be overridden by all images. 
 
-## `controlplane` Lifecycle API
+## `controlplane` Lifecycle API 
 
 Location: `/conteco/extract/controlplane`
 
