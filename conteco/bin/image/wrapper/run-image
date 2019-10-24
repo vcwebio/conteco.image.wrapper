@@ -36,9 +36,23 @@ else
 fi 
 
 # emit log and image wrapper info upon termination
-timestamp=$(to-timestamp)
-duration=$(( SECONDS - start))
-printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
-printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
-printf '"status":"exiting", "uptime-seconds":"%s"}\n' "$duration"
-sleep 1
+if [[ "$CONTECO_EXITPOINT" == "KEEPALIVE" ]] ; then
+	timestamp=$(to-timestamp)
+	duration=$(( SECONDS - start))
+	start=$SECONDS
+	while [[ "true" == "true" ]] ;
+	do
+		keepalive=$(( SECONDS - start))
+		printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
+		printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
+		printf '"status":"exiting", "uptime-seconds":"%s", "keepalive-seconds":"%s"}\n' "$duration" "$keepalive"
+		sleep 10
+	done
+else
+	timestamp=$(to-timestamp)
+	duration=$(( SECONDS - start))
+	printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
+	printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
+	printf '"status":"exiting", "uptime-seconds":"%s"}\n' "$duration"
+	sleep 1
+fi

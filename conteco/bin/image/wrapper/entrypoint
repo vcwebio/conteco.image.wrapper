@@ -23,6 +23,14 @@ if [[ $1 == '--executiontag' ]] ; then
   shift
 fi
 
+if [[ $1 == '--keepalive' ]] ; then
+  export CONTECO_EXITPOINT="KEEPALIVE"
+  shift
+elif [[ $1 == '--nokeepalive' ]] ; then
+  export CONTECO_EXITPOINT=
+  shift
+fi
+
 match='--'
 # --base forces entrypoint invocation with arguments - always JSON output
 if [[ $1 == '--base' ]] ; then

@@ -8,7 +8,7 @@ ENTRYPOINT ["/conteco/bin/image/wrapper/entrypoint"]
 
 ##### BEGIN image/Dockerfile/conteco #####
 COPY ./conteco/ /conteco/
-RUN chmod -R +x /conteco/bin && rm -rf /conteco/repo/*
+RUN chmod -R +x /conteco/bin && rm -rf /conteco/repo
 COPY ./ /conteco/repo/
 ##### END image/Dockerfile/conteco #####
 
@@ -22,7 +22,7 @@ ENV CONTECO_REALM="vcwebio" \
     CONTECO_ECOSYSTEM="conteco" \
     CONTECO_TYPE="image" \
     CONTECO_NAME="wrapper" \
-    CONTECO_TAG="v1.1.2" \
+    CONTECO_TAG="v1.1.3" \
     CONTECO_BASE="external.bash" \
     CONTECO_BUILD="image-wrapper"
 LABEL io.vcweb.schema-version="1.0" \
@@ -30,7 +30,7 @@ LABEL io.vcweb.schema-version="1.0" \
       io.vcweb.ecosystem="conteco" \
       io.vcweb.type="image" \
       io.vcweb.name="wrapper" \
-      io.vcweb.tag="v1.1.2" \
+      io.vcweb.tag="v1.1.3" \
       io.vcweb.base="external.bash" \
       io.vcweb.build="image-wrapper" \
       io.vcweb.label="Image Wrapper" \
