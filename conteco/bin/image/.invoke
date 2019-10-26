@@ -2,7 +2,8 @@
 # .invoke ports the invocation to the image functional API
 # The first arguments is the API method
 (
-    export PATH="$CONTECO_EXECUTIONPLANE_APIEXTERNALPATH"
+	pathName="CONTECO_EXECUTIONPLANE_APIEXTERNALPATH_${CONTECO_NAME^^}"
+    export PATH="${!pathName}"
     . executionplane-invoke "$0 $@"
     "$@"
     . executionplane-complete

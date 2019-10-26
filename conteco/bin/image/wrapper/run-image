@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-. .profile
+export PS1='$(pwd)# '
 start=$SECONDS
 
 # image-wrapper status information
