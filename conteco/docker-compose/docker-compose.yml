@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+
+# START SERVICE image.wrapper
+  image:
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.image.wrapper:v1.1.4
+    environment: [] 
+    command: ['usleep 500000000']
+    volumes: []
+    ports: []
+    networks: []
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources: 
+        limits: 
+          cpus: '0.75'
+          memory: '128m'
+        reservations:
+          cpus: '0.0'
+          memory: '5m'
+# END SERVICE image.wrapper
+
+volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
+networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
