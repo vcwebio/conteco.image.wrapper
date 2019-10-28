@@ -4,7 +4,7 @@ services:
 
 # START SERVICE image.wrapper
   image:
-    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.image.wrapper:v1.1.4
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.image.wrapper:v1.1.5
     environment: [] 
     command: ['usleep 500000000']
     volumes: []
