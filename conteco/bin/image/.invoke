@@ -1,10 +1,23 @@
 #!/usr/bin/env bash
-# .invoke ports the invocation to the image functional API
+
+# .invoke is the external entrypoint into the API
 # The first arguments is the API method
 (
 	pathName="CONTECO_EXECUTIONPLANE_APIEXTERNALPATH_${CONTECO_NAME^^}"
-    export PATH="${!pathName}"
-    . executionplane-invoke "$0 $@"
-    "$@"
-    . executionplane-complete
+  export PATH="${!pathName}"
+	. executionplane-invoke "$0 $@"
+	if [[ ! -f "/conteco/bin/${CONTECO_TYPE}/${CONTECO_NAME}/$1" ]] ; then
+		. executionplane-error "$1: Method does not exists!"
+  else
+		if [[ "$2" == "--help" ]] ; then
+			if [[ -f /conteco/help/${CONTECO_NAME}/$1 ]] ; then
+				cat /conteco/help/${CONTECO_NAME}/$1 | envsubst
+			else
+				executionplane-error "No help available"
+			fi
+		else
+			"$@"
+		fi
+  fi
+	. executionplane-complete
 )

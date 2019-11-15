@@ -23,9 +23,9 @@ The subfolders of the `bin` folder are owned by specific images.
 
 __`output-to-JSON`__  
 This method provides the output from `stdout` to the JSON convertor when using the __ContEco__ JSON output format.  
-By default no filter is applied. This can be overridden by all images. 
+By default no filter is applied. This can be overridden by all images.
 
-## `controlplane` Lifecycle API 
+## `controlplane` Lifecycle API
 
 Location: `/conteco/extract/controlplane`
 
@@ -45,7 +45,9 @@ It contains the API method invocation handler and a number of auxiliary methods:
 
 __`invoke`__  
 This method invokes methods of the image specific API.  
-It adds the image specific API folder to the front of the `$PATH` for the duration of its execution.
+It adds the image specific API folder to the front of the `$PATH` for the duration of its execution.  
+The method implements error handling for non-existent methods and a generic help file mechanism.  
+Help files should be placed in `/conteco/help/<method>`.
 
 __`image general purpose` API__  
 The general purpose API contains useful auxiliary methods.
@@ -58,7 +60,7 @@ Location: `/conteco/bin/image/executionplane`
 
 This folder contains methods for internal use for the public API implementation.  
 It consists of a number of logging methods to report on execution progress.
- 
+
 [`image executionplane` API in detail](./docs/IMAGE-EXECUTIONPLANE-API.md)
 
 ## `image.wrapper` API
