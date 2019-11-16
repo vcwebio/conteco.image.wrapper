@@ -6,15 +6,21 @@
 	pathName="CONTECO_EXECUTIONPLANE_APIEXTERNALPATH_${CONTECO_NAME^^}"
   export PATH="${!pathName}"
 	. executionplane-invoke "$0 $@"
-	if [[ ! -f "/conteco/bin/${CONTECO_TYPE}/${CONTECO_NAME}/$1" ]] ; then
+	if [[ "$1" == "--help" ]] ; then
+		if [[ -f /conteco/help/${CONTECO_NAME}/help ]] ; then
+			cat /conteco/help/${CONTECO_NAME}/help | envsubst
+		else
+			executionplane-error "No help available"
+		fi
+	elif [[ ! -f "/conteco/bin/${CONTECO_TYPE}/${CONTECO_NAME}/$1" ]] ; then
 		. executionplane-error "$1: Method does not exists!"
   else
 		if [[ "$2" == "--help" ]] ; then
-			if [[ -f /conteco/help/${CONTECO_NAME}/$1 ]] ; then
-				cat /conteco/help/${CONTECO_NAME}/$1 | envsubst
-			else
-				executionplane-error "No help available"
-			fi
+				if [[ -f /conteco/help/${CONTECO_NAME}/$1 ]] ; then
+					cat /conteco/help/${CONTECO_NAME}/$1 | envsubst
+				else
+					executionplane-error "No help available"
+				fi
 		else
 			"$@"
 		fi
