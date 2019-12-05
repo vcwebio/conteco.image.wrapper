@@ -4,21 +4,22 @@ services:
 
 # START SERVICE image.wrapper
   image:
-    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.image.wrapper:v1.1.5
-    environment: [${CONTECO_DC_IMAGE_WRAPPER_ENVIRONMENT}] 
-    command: [${CONTECO_DC_IMAGE_WRAPPER_COMMAND}]
-    volumes: [${CONTECO_DC_IMAGE_WRAPPER_VOLUMES}]
-    ports: [${CONTECO_DC_IMAGE_WRAPPER_PORTS}]
-    networks: [${CONTECO_DC_IMAGE_WRAPPER_NETWORKS}]
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.${CONTECO_DC_GLOBAL_IMAGE_NAME}
+    environment: []
+    command: ['usleep 500000000']
+    volumes: []
+    ports: []
+    networks: []
     deploy:
-      mode: ${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_MODE}
-      resources: 
-        limits: 
-          cpus: '${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_RESOURCES_LIMITS_CPUS}'
-          memory: '${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_RESOURCES_LIMITS_MEMORY}'
+      mode: replicated
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: '128m'
         reservations:
-          cpus: '${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
-          memory: '${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+          cpus: '0.0'
+          memory: '5m'
+      labels: [${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_LABELS}]
 # END SERVICE image.wrapper
 
 volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
