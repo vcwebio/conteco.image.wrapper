@@ -3,8 +3,7 @@ while read INPUT
 do
   if [[ $INPUT == *"\"action\": \"ERROR\","* ]] ; then
     echo "$INPUT"
-  else
+  elif [[ $1 != "--errors-only" ]] ; then
     executionplane-message "INFO" "$INPUT"
   fi
 done
-

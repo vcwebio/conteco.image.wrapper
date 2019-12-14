@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
+if [[ "$1" == "--"* ]] ; then
+  outputMode="$1"
+  shift
+fi
 executionplane-message "COMMAND" "$@"
-"$@"  > >( executionplane-output-parser-stdout ) 2> >( executionplane-output-parser-stderr)
-executionplane-wait-for-output-parser
+if [[ $outputMode == "--silent" ]] ; then
+  "$@" > /dev/null 2>&1
+else
+  "$@"  > >( executionplane-output-parser-stdout "$outputMode" ) 2> >( executionplane-output-parser-stderr)
+  executionplane-wait-for-output-parser
+fi
 executionplane-message "COMMCOMPL" "$@"
