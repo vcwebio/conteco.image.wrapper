@@ -1,6 +1,7 @@
-# conteco.image.wrapper
+# `image.wrapper` - Conteco
 
-The _conteco.image.wrapper_ image holds the common functionality wrapper for all __ContEco__ containers.
+The 'image.wrapper' image holds the functionality common to all images in the __conteco__ and __modeco__ ecosystems.  
+See `conteco.docs.overview` for more information on the ContEco ecosystem.
 
 ## Purpose
 
