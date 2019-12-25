@@ -15,25 +15,31 @@ if [ $# -eq 0 ] ; then
   $CONTECO_ENTRYPOINT
 )
 # --base switch invokes entrypoint with remaining arguments
-elif [ $1 == '--base' ] ; then 
+elif [ $1 == '--base' ] ; then
 (
   export PATH=$CONTECO_EXECUTIONPLANE_BASEPATH
   shift
   $CONTECO_ENTRYPOINT "$@"
 )
 # --all switch extracts all folders contained in wrapper
-elif [ $1 == '--extract' ] ; then 
+elif [ $1 == '--extract' ] ; then
 
-  extract
+  echo "Extracting to $CONTECO_REALM/$CONTECO_ECOSYSTEM.$CONTECO_IMAGE"
+  echo "Existing folder will be removed first."
+  destination=/conteco/pwd/$CONTECO_REALM/$CONTECO_ECOSYSTEM.$CONTECO_TYPE.$CONTECO_NAME
+  rm -rf $destination
+  mkdir -p $destination
+  cp -rp /conteco/repo/. $destination
+  chmod -R 777 $destination
 
 # --help switch lists available asset folder in image wrapper not including docs
-elif [ $1 == '--help' ]; then 
+elif [ $1 == '--help' ]; then
   (cat /conteco/assets/help.txt) | envsubst
   echo ""
 
 else
   "$@"
-fi 
+fi
 
 # emit log and image wrapper info upon termination
 if [[ "$CONTECO_EXITPOINT" == "KEEPALIVE" ]] ; then
