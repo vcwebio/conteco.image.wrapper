@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # START CONFIGURATION
-export CONTECO_DC_GLOBAL_STACKS=''image.wrapper''
+export CONTECO_DC_GLOBAL_STACKS='image.wrapper'
+export CONTECO_DC_GLOBAL_STACKNAMES='image_wrapper'
+export CONTECO_DC_GLOBAL_VOLUME_LIST=''
 # END CONFIGURATION
 
 # START OTHER VARIABLES
