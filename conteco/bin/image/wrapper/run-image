@@ -42,17 +42,24 @@ else
 fi
 
 # emit log and image wrapper info upon termination
-if [[ "$CONTECO_EXITPOINT" == "KEEPALIVE" ]] ; then
+if [[ "$CONTECO_EXITPOINT" == "KEEPALIVE"* ]] ; then
+  cycles=$(echo "$CONTECO_EXITPOINT" | cut -d':' -f 2)
+  let "iterations = 0$cycles"
 	timestamp=$(to-timestamp)
 	duration=$(( SECONDS - start))
 	start=$SECONDS
-	while [[ "true" == "true" ]] ;
+  continue="true"
+	while [[ "true" == "$continue" ]] ;
 	do
 		keepalive=$(( SECONDS - start))
 		printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
 		printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
 		printf '"status":"exiting", "uptime-seconds":"%s", "keepalive-seconds":"%s"}\n' "$duration" "$keepalive"
-		sleep 10
+		sleep 5
+    let "iterations = iterations - 1"
+    if (( iterations == 0 )) ; then
+      continue="false"
+    fi
 	done
 else
 	timestamp=$(to-timestamp)

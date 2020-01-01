@@ -32,14 +32,14 @@ if [[ $1 == '--executiontag' ]] ; then
   shift
 fi
 
-if [[ $1 == '--keepalive' ]] ; then
-  export CONTECO_EXITPOINT="KEEPALIVE"
+if [[ $1 == "--keepalive"* ]] ; then
+  cycles=$(echo "$1" | cut -d':' -f 2)
+  export CONTECO_EXITPOINT="KEEPALIVE:$cycles"
   shift
 elif [[ $1 == '--nokeepalive' ]] ; then
   export CONTECO_EXITPOINT=
   shift
 fi
-
 match='--'
 # --base forces entrypoint invocation with arguments - always JSON output
 if [[ $1 == '--base' ]] ; then
