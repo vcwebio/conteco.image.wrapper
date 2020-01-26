@@ -42,22 +42,24 @@ elif [[ $1 == '--nokeepalive' ]] ; then
 fi
 match='--'
 # --base forces entrypoint invocation with arguments - always JSON output
-if [[ $1 == '--base' ]] ; then
+if [[ "$1" == '--base' ]] ; then
+  ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
+
+# --container switch forces JSON output
+elif [[ "$1" == '--container' ]] ; then
+  shift
   ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
 
 # --interactive forces text output, required when interactively running processes within a container
-elif [[ $1 == '--interactive' ]] ; then
-  shift
+elif [[ "$1" == '--interactive' || "$CONTECO_INTERACTIVE" == "true" ]] ; then
+  if [[ "$1" == '--interactive' ]] ; then
+    shift
+  fi
   run-image $@
-
-# --container switch forces JSON output
-elif [[ $1 == '--container' ]] ; then
-  shift
-  ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
 
 # double hyphen switches target image wrapper API, unless --base is used first
 # default mode is interactive and default output is text
-elif [[ $1 == $match* ]] ; then
+elif [[ "$1" == $match* ]] ; then
   run-image $@
 
 # default mode is JSON output

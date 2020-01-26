@@ -31,7 +31,8 @@ __`--keepalive`__  (and __`--nokeepalive`__)
 The second group contains two mutually exclusive flags.
 
 __`--interactive`__  
-Forces the output of `stdout` and `stderr` to be emitted in  original (text) format, i.e. without the ContEco JSON wrapper.
+Forces the output of `stdout` and `stderr` to be emitted in  original (text) format, i.e. without the ContEco JSON wrapper.  
+This can be set as default be setting environment variable CONTECO_INTERACTIVE=true using the __CONTECO_PREENTRYPOINT__ hook.
 
 __`--container`__  
 Forces the output of `stdout` and `stderr` to be emitted with a  ContEco JSON wrapper.
