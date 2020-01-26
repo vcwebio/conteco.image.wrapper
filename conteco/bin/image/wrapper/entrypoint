@@ -17,12 +17,12 @@ for f in /conteco/bin/${CONTECO_TYPE}/* ;
 do
 	folder=$(basename $f)
 	if [[ -d $f && "$folder" != "internal" && "$folder" != "image" ]] ; then
-        envName="CONTECO_EXECUTIONPLANE_APIEXTERNALPATH_${folder^^}"
-        export "$envName"="/conteco/bin/${CONTECO_TYPE}/$folder:${CONTECO_EXECUTIONPLANE_ORIGINALPATH}"
-        envName="CONTECO_EXECUTIONPLANE_APIINTERNALPATH_${folder^^}"
-        export "$envName"="/conteco/bin/${CONTECO_TYPE}/$folder:/conteco/bin/${CONTECO_TYPE}/$folder/internal:/conteco/bin/${CONTECO_TYPE}/internal:$CONTECO_EXECUTIONPLANE_ORIGINALPATH"
+    envName="CONTECO_EXECUTIONPLANE_APIEXTERNALPATH_${folder^^}"
+    export "$envName"="/conteco/bin/${CONTECO_TYPE}/$folder:${CONTECO_EXECUTIONPLANE_ORIGINALPATH}"
+    envName="CONTECO_EXECUTIONPLANE_APIINTERNALPATH_${folder^^}"
+    export "$envName"="/conteco/bin/${CONTECO_TYPE}/$folder:/conteco/bin/${CONTECO_TYPE}/$folder/internal:/conteco/bin/${CONTECO_TYPE}/internal:$CONTECO_EXECUTIONPLANE_ORIGINALPATH"
 	fi
-	done;
+done;
 
 export CONTECO_EXECUTIONPLANE="${CONTECO_IMAGE}"
 

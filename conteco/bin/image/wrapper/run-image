@@ -21,7 +21,7 @@ elif [ $1 == '--base' ] ; then
   shift
   $CONTECO_ENTRYPOINT "$@"
 )
-# --all switch extracts all folders contained in wrapper
+# --extract switch: extract image repository
 elif [ $1 == '--extract' ] ; then
 
   echo "Extracting to $CONTECO_REALM/$CONTECO_ECOSYSTEM.$CONTECO_IMAGE"
