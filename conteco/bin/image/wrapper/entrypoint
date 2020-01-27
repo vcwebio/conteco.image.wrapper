@@ -40,6 +40,7 @@ elif [[ $1 == '--nokeepalive' ]] ; then
   export CONTECO_EXITPOINT=
   shift
 fi
+
 match='--'
 # --base forces entrypoint invocation with arguments - always JSON output
 if [[ "$1" == '--base' ]] ; then
