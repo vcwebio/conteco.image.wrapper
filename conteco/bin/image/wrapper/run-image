@@ -67,5 +67,5 @@ else
 	printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
 	printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
 	printf '"status":"exiting", "uptime-seconds":"%s"}\n' "$duration"
-	sleep 1
+	usleep 500000
 fi
