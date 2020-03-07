@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # START CONFIGURATION
-export CONTECO_DC_GLOBAL_STACKS="image.wrapper"
-export CONTECO_DC_GLOBAL_STACKNAMES="image_wrapper"
+export CONTECO_DC_GLOBAL_PACKAGE_CONTECO="image.wrapper"
+export CONTECO_DC_GLOBAL_STACKNAMES="conteco_dc_image_wrapper"
 export CONTECO_DC_GLOBAL_BOOTSTACKS=""
-export CONTECO_DC_GLOBAL_RUNSTACKS="image_wrapper"
+export CONTECO_DC_GLOBAL_RUNSTACKS="conteco_dc_image_wrapper"
 export CONTECO_DC_GLOBAL_VOLUME_LIST=""
 # END CONFIGURATION
 

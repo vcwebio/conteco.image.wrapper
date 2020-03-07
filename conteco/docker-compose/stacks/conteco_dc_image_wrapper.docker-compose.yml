@@ -4,7 +4,7 @@ services:
 
 # START SERVICE image.wrapper
   image:
-    image: ${CONTECO_REGISTRY}${CONTECO_REALM_RUNTIME}/conteco.${CONTECO_DC_GLOBAL_IMAGE_NAME}
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.${CONTECO_DC_GLOBAL_IMAGE_NAME}
     environment: []
     command: ['sleep 0.5']
     volumes: []
@@ -14,7 +14,7 @@ services:
       mode: replicated
       resources:
         limits:
-          cpus: '0.75'
+          cpus: ''
           memory: '128m'
         reservations:
           cpus: '0.0'
