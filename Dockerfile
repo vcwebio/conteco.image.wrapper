@@ -1,5 +1,5 @@
 ##### BEGIN image.wrapper/Dockerfile/image-header #####
-FROM $CONTECO_REGISTRY$CONTECO_REALM/$CONTECO_ECOSYSTEM.$CONTECO_BASE AS base
+FROM $CONTECO_REGISTRY$CONTECO_REALM_RUNTIME/$CONTECO_ECOSYSTEM_RUNTIME.$CONTECO_BASE AS base
 ##### END image.wrapper/Dockerfile/image-header #####
 
 ##### BEGIN image.wrapper/Dockerfile/conteco #####
@@ -18,7 +18,7 @@ WORKDIR /conteco/pwd
 ##### END image/Dockerfile/build-instructions #####
 
 ##### BEGIN image.wrapper/Dockerfile/env-labels-footer #####
-ENV CONTECO_REALM="$CONTECO_REALM" \
+ENV CONTECO_REALM="$CONTECO_REALM_RUNTIME" \
     CONTECO_ECOSYSTEM="$CONTECO_ECOSYSTEM_RUNTIME" \
     CONTECO_TYPE="$CONTECO_TYPE" \
     CONTECO_NAME="$CONTECO_NAME" \
@@ -26,7 +26,7 @@ ENV CONTECO_REALM="$CONTECO_REALM" \
     CONTECO_BASE="$CONTECO_BASE" \
     CONTECO_BUILD="$CONTECO_BUILD"
 LABEL $CONTECO_LABELSPACE.schema-version="1.0" \
-      $CONTECO_LABELSPACE.realm="$CONTECO_REALM" \
+      $CONTECO_LABELSPACE.realm="$CONTECO_REALM_RUNTIME" \
       $CONTECO_LABELSPACE.ecosystem="$CONTECO_ECOSYSTEM_RUNTIME" \
       $CONTECO_LABELSPACE.type="$CONTECO_TYPE" \
       $CONTECO_LABELSPACE.name="$CONTECO_NAME" \
