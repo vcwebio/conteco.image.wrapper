@@ -64,4 +64,4 @@ All images have the ContEco related assets in a common folder structure.
 
 The image contains the build repository as part of its common folder structure. This repository has itself a common structure.
 
-[GIT Repository Structure in detail](./docs/GIT-REPOSITORY-STRUCTURE.md)
+[GIT Repository Structure in detail](./docs/repo-STRUCTURE.md)
