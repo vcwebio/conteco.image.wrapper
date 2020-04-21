@@ -8,6 +8,14 @@ export CONTECO_EXECUTIONPLANE_ORIGINALPATH=$PATH
 export PATH="/conteco/bin/image/wrapper:${CONTECO_EXECUTIONPLANE_ORIGINALPATH}"
 export CONTECO_EXECUTIONPLANE_WRAPPERPATH=$PATH
 
+# set CONTECO_HOSTNAME
+if [[ -f /hostfs/etc/hostname ]]; then
+  export CONTECO_HOSTNAME="$(< /hostfs/etc/hostname)"
+fi
+if [[ "$CONTECO_HOSTNAME" == "" ]]; then
+  export CONTECO_HOSTNAME="localhost"
+fi
+
 if [[ $CONTECO_PREENTRYPOINT != "" ]] ; then
   . "$CONTECO_PREENTRYPOINT"
 fi

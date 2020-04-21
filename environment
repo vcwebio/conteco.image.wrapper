@@ -5,7 +5,7 @@ export CONTECO_DESCRIPTION="The conteco.image.wrapper image implements the funct
 
 export CONTECO_TYPE="image"
 export CONTECO_NAME="wrapper"
-export CONTECO_TAG="v1.2.1"
+export CONTECO_TAG="v1.2.2"
 export CONTECO_TAG_TYPE="incremental"
 
 export CONTECO_BASE="external.bash"
