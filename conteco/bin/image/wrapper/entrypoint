@@ -11,6 +11,8 @@ export CONTECO_EXECUTIONPLANE_WRAPPERPATH=$PATH
 # set CONTECO_HOSTNAME
 if [[ -f /hostfs/etc/hostname ]]; then
   export CONTECO_HOSTNAME="$(< /hostfs/etc/hostname)"
+elif [[ -d /hostfs/etc ]]; then
+  export CONTECO_HOSTNAME="host.docker.internal"
 fi
 if [[ "$CONTECO_HOSTNAME" == "" ]]; then
   export CONTECO_HOSTNAME="localhost"
