@@ -54,7 +54,11 @@ fi
 match='--'
 # --base forces entrypoint invocation with arguments - always JSON output
 if [[ "$1" == '--base' ]] ; then
-  ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
+  if [[ "$CONTECO_INTERACTIVE" == 'true' ]] ; then
+    run-image $@
+  else
+    ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
+  fi
 
 # --container switch forces JSON output
 elif [[ "$1" == '--container' ]] ; then
