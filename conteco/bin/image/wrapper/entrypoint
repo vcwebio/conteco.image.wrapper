@@ -57,13 +57,13 @@ if [[ "$1" == '--base' ]] ; then
   if [[ "$CONTECO_INTERACTIVE" == 'true' ]] ; then
     run-image $@
   else
-    ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
+    ( run-image $@ ) > >( output-to-JSON "INFO" ) 2> >( output-to-JSON "ERROR" )
   fi
 
 # --container switch forces JSON output
 elif [[ "$1" == '--container' ]] ; then
   shift
-  ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
+  ( run-image $@ ) > >( output-to-JSON "INFO" ) 2> >( output-to-JSON "ERROR" )
 
 # --interactive forces text output, required when interactively running processes within a container
 elif [[ "$1" == '--interactive' || "$CONTECO_INTERACTIVE" == "true" ]] ; then
@@ -79,5 +79,5 @@ elif [[ "$1" == $match* ]] ; then
 
 # default mode is JSON output
 else
-  ( run-image $@ ) > >( to-JSON "INFO" ) 2> >( to-JSON "ERROR" )
+  ( run-image $@ ) > >( output-to-JSON "INFO" ) 2> >( output-to-JSON "ERROR" )
 fi

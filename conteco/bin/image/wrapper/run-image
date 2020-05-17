@@ -4,7 +4,7 @@ start=$SECONDS
 
 # image-wrapper status information
 timestamp=$(to-timestamp)
-printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
+printf '{ "origin": "%s", "@timestamp":"%s", "source":"wrapper", ' "$CONTECO_IMAGE" "$timestamp"
 printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
 printf '"status":"initialising", "entrypoint": "/conteco/bin/image/wrapper/run-image %s "}\n' "'$*'"
 
@@ -52,7 +52,7 @@ if [[ "$CONTECO_EXITPOINT" == "KEEPALIVE"* ]] ; then
 	while [[ "true" == "$continue" ]] ;
 	do
 		keepalive=$(( SECONDS - start))
-		printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
+		printf '{ "origin": "%s", "@timestamp":"%s", "source":"wrapper", ' "$CONTECO_IMAGE" "$timestamp"
 		printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
 		printf '"status":"exiting", "uptime-seconds":"%s", "keepalive-seconds":"%s"}\n' "$duration" "$keepalive"
 		sleep 5
@@ -64,7 +64,7 @@ if [[ "$CONTECO_EXITPOINT" == "KEEPALIVE"* ]] ; then
 else
 	timestamp=$(to-timestamp)
 	duration=$(( SECONDS - start))
-	printf '{ "@timestamp":"%s", "source":"wrapper", "level": "INFO", ' "$timestamp"
+	printf '{ "origin": "%s", "@timestamp":"%s", "source":"wrapper", ' "$CONTECO_IMAGE" "$timestamp"
 	printf '"realm": "%s", "ecosystem": "%s", "base": "%s", "tag": "%s", ' "$CONTECO_REALM" "$CONTECO_ECOSYSTEM" "$CONTECO_BASE" "$CONTECO_TAG"
 	printf '"status":"exiting", "uptime-seconds":"%s"}\n' "$duration"
 	sleep 0.25

@@ -21,9 +21,9 @@ __`run-image`__
 This method emits the __wrapper__ JSON including the _keepalive_ record.  
 It executes the process as set by the commanline.  
 
-__`to-JSON`__  
+__`output-to-JSON`__  
 Wraps the output from `stdout` and `stderr` line by line into a __ContEco__ JSON wrapper.  
-It invokes `output-to-JSON` to filter / reshape the message output. Default behaviour is to leave the message unchanged. This method can be overridden by the image definition. `output-to-JSON` resides in `/conteco/bin`.  
+Default behaviour is to leave the message unchanged. This method can be overridden by the image definition.  
 The wrapper contains the following fields:
 * __@timestamp__  
 The timestamp of the wrapper creation.
