@@ -12,6 +12,7 @@ services:
     networks: []
     deploy:
       mode: replicated
+      replicas: 1
       resources:
         limits:
           cpus: ''
@@ -19,7 +20,10 @@ services:
         reservations:
           cpus: '0.0'
           memory: '5m'
+      placement:
+        constraints: [${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_PLACEMENT_CONSTRAINTS}]
       labels: [${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_LABELS}]
+    labels: [${CONTECO_DC_IMAGE_WRAPPER_LABELS}]
 # END SERVICE image.wrapper
 
 volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
