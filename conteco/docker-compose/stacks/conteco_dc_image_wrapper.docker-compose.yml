@@ -12,7 +12,7 @@ services:
     networks: []
     deploy:
       mode: replicated
-      replicas: 1
+      ${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_MODE_REPLICATED_REPLICAS}
       resources:
         limits:
           cpus: ''
