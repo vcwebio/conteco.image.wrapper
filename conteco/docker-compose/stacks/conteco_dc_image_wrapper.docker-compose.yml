@@ -12,19 +12,19 @@ services:
     networks: []
     deploy:
       mode: replicated
-      ${CONTECO_DC_IMAGE_WRAPPER_DEPLOY_MODE_REPLICATED_REPLICAS}
       resources:
         limits:
           cpus: ''
           memory: '128m'
         reservations:
-          cpus: '0.0'
+          cpus: ''
           memory: '5m'
       placement:
         constraints: []
-      labels: []
-    labels: []
+      ${CONTECO_DC_BASH_DEPLOY_EXTENSIONS}
+    ${CONTECO_DC_BASH_SERVICE_EXTENSIONS}
 # END SERVICE image.wrapper
 
-volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
 networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
+volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
+${CONTECO_DC_BASH_GLOBAL_EXTENSIONS}
