@@ -14,17 +14,12 @@ services:
       mode: replicated
       resources:
         limits:
-          cpus: ''
           memory: '128m'
         reservations:
-          cpus: ''
           memory: '5m'
-      placement:
-        constraints: []
-      ${CONTECO_DC_BASH_DEPLOY_EXTENSIONS}
-    ${CONTECO_DC_BASH_SERVICE_EXTENSIONS}
+${CONTECO_DC_IMAGE_WRAPPER_COMPOSE_EXTENSIONS}
 # END SERVICE image.wrapper
 
 networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
 volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
-${CONTECO_DC_BASH_GLOBAL_EXTENSIONS}
+${CONTECO_DC_GLOBAL_COMPOSE_EXTENSIONS}
