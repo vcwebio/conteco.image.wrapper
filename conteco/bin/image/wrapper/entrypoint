@@ -43,7 +43,7 @@ if [[ $1 == '--executiontag' ]] ; then
 fi
 
 if [[ $1 == "--keepalive"* ]] ; then
-  cycles=$(echo "$1" | cut -d':' -f 2)
+  cycles=$(echo "$1" | cut -d':' -f 2 | cut -d' ' -f 1)
   export CONTECO_EXITPOINT="KEEPALIVE:$cycles"
   shift
 elif [[ $1 == '--nokeepalive' ]] ; then
